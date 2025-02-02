@@ -1,0 +1,33 @@
+<app-avigation />
+<div class="flex flex-col min-h-screen">
+  <main class="flex-1 mx-auto">
+    <h1 class="font-black text-2xl text-center p-8">Liste des Pokémons</h1>
+    <div class="flex justify-center">
+      <input type="text" name="pokemonName" id="" #pokemonInput placeholder="Rechercher un Pokemon"
+        [value]="searchInput()" (input)="searchInput.set(pokemonInput.value)"
+        class="w-1/4 p-4 border-2 focus:outline-solid focus:outline-green-500">
+    </div>
+    <ul class="flex w-[80dvw] mt-4 flex-wrap">
+      @for (pokemon of pokemonFilteredList(); track pokemon.id) {
+      <li class="w-md flex items-center border-2 border-gray-100 m-4 rounded-md" pokemon-border-type>
+        <img src="{{pokemon.picture}}" alt="{{pokemon.name}}" class="bg-gray-100">
+        <div class="h-full flex flex-col p-4 justify-evenly">
+          <div>
+            <p class="capitalize font-bold">{{ pokemon.name }}</p>
+            <p>Taile : {{size(pokemon.life)}} </p>
+            <p>Point de vie : {{ pokemon.life }}</p>
+          </div>
+          <div>
+            <button
+              class="px-4 py-1 border-2 border-gray-400 rounded-md hover:cursor-pointer active:bg-gray-400 active:text-white focus:outline-solid focus:outline-green-500"
+              (click)="plusLife(pokemon)">+</button>
+            <button
+              class="px-4 py-1 border-2 border-gray-400 rounded-md hover:cursor-pointer active:bg-gray-400 active:text-white focus:outline-solid focus:outline-green-500"
+              (click)="minusLife(pokemon)">-</button>
+          </div>
+        </div>
+      </li>
+      }
+    </ul>
+  </main>
+</div>
