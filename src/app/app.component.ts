@@ -3,10 +3,11 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './types/pokemon';
 import { PokemonBorderDirective } from './directives/pokemon-border.directive';
+import { TechnosComponent } from './components/technos/technos.component';
 
 @Component({
   selector: 'app-root',
-  imports: [NavigationComponent, PokemonBorderDirective],
+  imports: [NavigationComponent, PokemonBorderDirective, TechnosComponent],
   providers: [PokemonService],
   templateUrl: './app.component.html',
 })
