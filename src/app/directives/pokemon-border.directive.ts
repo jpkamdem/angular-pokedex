@@ -22,6 +22,10 @@ export class PokemonBorderDirective {
     this.initialColor = this.hostElement.style.borderColor;
   }
 
+  private setBorder(color: string) {
+    this.hostElement.style.borderColor = color;
+  }
+
   @HostListener('mouseenter') onMouseEnter() {
     const color = this.pokemonService.getTypeColor(
       this.pokemonBorder.types,
@@ -33,9 +37,5 @@ export class PokemonBorderDirective {
   @HostListener('mouseleave') onMouseLeave() {
     const color = this.initialColor;
     this.setBorder(color);
-  }
-
-  private setBorder(color: string) {
-    this.hostElement.style.borderColor = color;
   }
 }
