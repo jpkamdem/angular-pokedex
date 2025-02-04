@@ -4,7 +4,7 @@ export type Pokemon = {
   picture: string;
   life: number;
   damage: number;
-  types: [string, string?, string?];
+  types: [string, string?];
   created: Date;
 };
 

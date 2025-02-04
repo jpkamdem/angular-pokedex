@@ -9,13 +9,21 @@
     </div>
     <ul class="flex justify-center mx-auto w-[80dvw] mt-4 flex-wrap">
       @for (pokemon of pokemonFilteredList(); track pokemon.id) {
-      <li class="w-md flex items-center border-2 border-gray-100 m-4 rounded-md" pokemon-border-type>
+      <li class="w-md flex items-center border-2 border-gray-100 m-4 rounded-md" appPokemonBorder
+        [pokemonBorder]="pokemon">
         <img src="{{pokemon.picture}}" alt="{{pokemon.name}}" class="bg-gray-100">
-        <div class="h-full flex flex-col p-4 justify-evenly">
+        <div class="h-full w-full flex flex-col p-4 justify-evenly">
           <div>
             <p class="capitalize font-bold">{{ pokemon.name }}</p>
             <p>Taile : {{size(pokemon.life)}} </p>
             <p>Point de vie : {{ pokemon.life }}</p>
+          </div>
+          <div>
+            <ul class="flex">
+              @for (type of pokemon.types; track $index) {
+              <li class="my-1 p-2 mr-1 bg-amber-200">{{ type }}</li>
+              }
+            </ul>
           </div>
           <div>
             <button
